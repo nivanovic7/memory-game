@@ -13,6 +13,7 @@ form.addEventListener("submit", function (e) {
   ).value;
 
   createBoard(boardSize);
+  populateCells(boardSize);
 });
 
 const createBoard = function (boardSize) {
@@ -28,4 +29,19 @@ const createBoard = function (boardSize) {
 
     board.insertAdjacentElement("beforeend", row);
   }
+};
+
+const populateCells = function (boardSize) {
+  let [...cells] = document.querySelectorAll(".cell");
+  const numOfDuplicates = boardSize === "4" ? 8 : 18;
+  for (let i = 1; i <= numOfDuplicates; i++) {
+    setNumToRandomCell(i, cells);
+    setNumToRandomCell(i, cells); //set the same number to two cells so we have duplicates
+  }
+};
+
+const setNumToRandomCell = function (num, cells) {
+  let randomCellIndex = Math.floor(Math.random() * cells.length); // select random cell
+  const cell = cells.splice(randomCellIndex, 1); //remove selected cell from array
+  cell[0].textContent = num; //add number to that cell
 };
