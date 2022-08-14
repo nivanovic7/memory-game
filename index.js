@@ -2,11 +2,18 @@
 
 const form = document.querySelector("form");
 const board = document.querySelector(".board");
+const newGameBtn = document.querySelector(".new-game-btn");
+const playersContainer = document.querySelector(".players");
+let players;
+let currPlayerIndex = 0;
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   form.classList.add("hide");
+  board.classList.remove("hide");
+  newGameBtn.classList.remove("hide");
+  playersContainer.classList.remove("hide");
 
   const boardSize = document.querySelector(
     "input[name=cell-num]:checked"
@@ -14,6 +21,23 @@ form.addEventListener("submit", function (e) {
 
   createBoard(boardSize);
   populateCells(boardSize);
+
+  const numOfPlayers = document.querySelector(
+    "input[name=player-num]:checked"
+  ).value;
+  addPlayers(numOfPlayers);
+  players = document.querySelectorAll(".player");
+  players[0].classList.add("current-player");
+});
+
+newGameBtn.addEventListener("click", function () {
+  form.classList.remove("hide");
+  board.classList.add("hide");
+  newGameBtn.classList.add("hide");
+  playersContainer.classList.add("hide");
+
+  board.innerHTML = "";
+  playersContainer.innerHTML = "";
 });
 
 const createBoard = function (boardSize) {
@@ -44,4 +68,28 @@ const setNumToRandomCell = function (num, cells) {
   let randomCellIndex = Math.floor(Math.random() * cells.length); // select random cell
   const cell = cells.splice(randomCellIndex, 1); //remove selected cell from array
   cell[0].textContent = num; //add number to that cell
+};
+
+const addPlayers = function (numberOfPlayers) {
+  for (let i = 1; i <= numberOfPlayers; i++) {
+    createPlayerIndicator(i);
+  }
+};
+
+const createPlayerIndicator = function (playerNum) {
+  const player = document.createElement("div");
+  player.classList.add("player");
+
+  const playerName = document.createElement("p");
+  playerName.classList.add("player-name");
+  playerName.textContent = `Player ${playerNum}`;
+
+  const playerScore = document.createElement("p");
+  playerScore.classList.add("playerScore");
+  playerScore.textContent = 0;
+
+  player.insertAdjacentElement("beforeend", playerName);
+  player.insertAdjacentElement("beforeend", playerScore);
+
+  document.querySelector(".players").insertAdjacentElement("beforeend", player);
 };
