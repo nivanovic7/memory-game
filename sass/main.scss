@@ -1,0 +1,26 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(107, 40, 40);
+  color: rgb(245, 137, 137);
+}
+
+.container {
+  min-height: 100vh;
+}
+
+.game-options {
+  background-color: rgb(27, 27, 63);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 60%;
+  margin: auto;
+}

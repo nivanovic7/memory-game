@@ -1,0 +1,22 @@
+{
+  "name": "memory-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile-sass": "node-sass sass/main.scss style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nivanovic7/memory-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nivanovic7/memory-game/issues"
+  },
+  "homepage": "https://github.com/nivanovic7/memory-game#readme",
+  "devDependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

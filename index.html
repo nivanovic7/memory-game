@@ -8,6 +8,37 @@
     <script defer src="index.js"></script>
   </head>
   <body>
-    <h1>Hello world!</h1>
+    <div class="container">
+      <form class="game-options">
+        <div class="game-options__cells">
+          <p>Board:</p>
+          <label for="cells-4">4x4 cells</label>
+          <input type="radio" name="cell-num" id="cells-4" value="4" checked />
+          <label for="cell-6">6x6 cells</label>
+          <input type="radio" name="cell-num" id="cells-6" value="6" />
+        </div>
+
+        <div class="game-options__players">
+          <p>Number of players:</p>
+
+          <label for="player-num">1 player</label>
+          <input
+            type="radio"
+            name="player-num"
+            id="player-1"
+            value="1"
+            checked
+          />
+          <label for="player-num">2 players</label>
+          <input type="radio" name="player-num" id="player-2" value="2" />
+          <label for="player-num">3 players</label>
+          <input type="radio" name="player-num" id="player-3" value="3" />
+          <label for="player-num">4 players</label>
+          <input type="radio" name="player-num" id="player-4" value="4" />
+        </div>
+
+        <button type="submit" class="start-game-btn">Start Game</button>
+      </form>
+    </div>
   </body>
 </html>

@@ -3,10 +3,20 @@
 *::before {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 body {
-  background-color: rgb(88, 29, 29);
-  color: rgb(245, 137, 137);
-}
+  background-color: #6b2828;
+  color: #f58989; }
+
+.container {
+  min-height: 100vh; }
+
+.game-options {
+  background-color: #1b1b3f;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 60%;
+  margin: auto; }
