@@ -38,6 +38,7 @@ body {
   margin: auto;
   text-align: center;
   font-family: var(--main-font);
+
   h1 {
     color: white;
 
@@ -76,4 +77,28 @@ body {
     background-color: transparent;
     color: rgb(255, 255, 255);
   }
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.cell {
+  width: 75px;
+  height: 75px;
+  background-color: yellow;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.hide {
+  display: none;
 }
