@@ -4,8 +4,11 @@ const form = document.querySelector("form");
 const board = document.querySelector(".board");
 const newGameBtn = document.querySelector(".new-game-btn");
 const playersContainer = document.querySelector(".players");
+
 let players;
 let currPlayerIndex = 0;
+let openedCells = [];
+let matchedCount = 0;
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -28,6 +31,13 @@ form.addEventListener("submit", function (e) {
   addPlayers(numOfPlayers);
   players = document.querySelectorAll(".player");
   players[0].classList.add("current-player");
+
+  document.querySelectorAll(".cell").forEach((cell) => {
+    cell.addEventListener("click", function () {
+      cell.classList.add("cell-click");
+      checkMatch(cell);
+    });
+  });
 });
 
 newGameBtn.addEventListener("click", function () {
@@ -92,4 +102,60 @@ const createPlayerIndicator = function (playerNum) {
   player.insertAdjacentElement("beforeend", playerScore);
 
   document.querySelector(".players").insertAdjacentElement("beforeend", player);
+};
+
+const checkMatch = function (cell) {
+  let match = false;
+  openedCells.push(cell);
+  if (openedCells.length === 2) {
+    if (openedCells[0].textContent !== openedCells[1].textContent) {
+      setTimeout(resetCells, 400);
+      addScore(match);
+      highlightCurrPlayer();
+    } else {
+      match = true;
+      addScore(match);
+      openedCells.forEach((cell) => cell.classList.add("remove-cell"));
+      openedCells = [];
+      const neededMatchesForWin = document.querySelectorAll(".cell").length / 2;
+      matchedCount++;
+      matchedCount === neededMatchesForWin && youWin();
+    }
+  }
+};
+
+const resetCells = function () {
+  openedCells.forEach((cell) => cell.classList.remove("cell-click"));
+  openedCells = [];
+};
+
+const highlightCurrPlayer = function () {
+  players.forEach((player) => {
+    player.classList.remove("currPlayer");
+  });
+
+  players[currPlayerIndex].classList.add("currPlayer");
+};
+
+const addScore = function (match) {
+  if (match) {
+    players[currPlayerIndex].querySelector(".playerScore").textContent =
+      +players[currPlayerIndex].querySelector(".playerScore").textContent + 1;
+  } else {
+    currPlayerIndex === players.length - 1
+      ? (currPlayerIndex = 0)
+      : currPlayerIndex++;
+  }
+};
+
+const youWin = function () {
+  const scores = document.querySelectorAll(".playerScore");
+  const winner = [...players].reduce((acc, curr) => {
+    return +acc.querySelector(".playerScore").textContent >
+      +curr.querySelector(".playerScore").textContent
+      ? acc
+      : curr;
+  }, [...players][0]);
+  alert(`WInner is ${winner.querySelector(".player-name").textContent}`);
+  matchedCount = 0;
 };

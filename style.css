@@ -80,12 +80,20 @@ body {
   background-color: var(--cell-bg-color);
   margin: 7px;
   border-radius: 50%;
-  color: #160f0f;
+  color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   user-select: none;
   font-size: 2rem; }
+
+.cell-click {
+  color: black;
+  pointer-events: none; }
+
+.remove-cell {
+  background-color: transparent;
+  color: whitesmoke; }
 
 .players {
   display: flex;

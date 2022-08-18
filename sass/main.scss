@@ -109,12 +109,22 @@ body {
   background-color: var(--cell-bg-color);
   margin: 7px;
   border-radius: 50%;
-  color: rgb(22, 15, 15);
+  color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   user-select: none;
   font-size: 2rem;
+}
+
+.cell-click {
+  color: black;
+  pointer-events: none;
+}
+
+.remove-cell {
+  background-color: transparent;
+  color: whitesmoke;
 }
 
 .players {
