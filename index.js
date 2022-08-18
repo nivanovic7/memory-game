@@ -131,10 +131,10 @@ const resetCells = function () {
 
 const highlightCurrPlayer = function () {
   players.forEach((player) => {
-    player.classList.remove("currPlayer");
+    player.classList.remove("current-player");
   });
 
-  players[currPlayerIndex].classList.add("currPlayer");
+  players[currPlayerIndex].classList.add("current-player");
 };
 
 const addScore = function (match) {
