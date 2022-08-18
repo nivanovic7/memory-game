@@ -45,6 +45,7 @@ newGameBtn.addEventListener("click", function () {
   board.classList.add("hide");
   newGameBtn.classList.add("hide");
   playersContainer.classList.add("hide");
+  document.querySelector(".message").style.visibility = "hidden";
 
   board.innerHTML = "";
   playersContainer.innerHTML = "";
@@ -156,6 +157,11 @@ const youWin = function () {
       ? acc
       : curr;
   }, [...players][0]);
-  alert(`WInner is ${winner.querySelector(".player-name").textContent}`);
+  gameOver(winner.querySelector(".player-name").textContent);
   matchedCount = 0;
+};
+
+const gameOver = function (player) {
+  document.querySelector(".message").textContent = ` ${player} wins!!!`;
+  document.querySelector(".message").style.visibility = "visible";
 };
